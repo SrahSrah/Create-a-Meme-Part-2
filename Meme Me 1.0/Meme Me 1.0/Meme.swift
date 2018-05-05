@@ -23,5 +23,16 @@ struct Meme {
         self.memedImage = memedImage
     }
     
+    // Returns meme text for viewing in tableview
+    func getMemeText() -> String{
+        
+        return self.topText + " / " + self.bottomText
+        
+    }
+    
+    // Returns image
+    func getImage() -> UIImage{
+        return self.memedImage
+    }
 }
 

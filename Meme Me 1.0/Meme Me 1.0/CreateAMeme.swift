@@ -212,6 +212,8 @@ class CreateAMeme: UIViewController, UIImagePickerControllerDelegate, UINavigati
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        
+        print("Meme saved, you have saved \(appDelegate.memes.count) memes")
 
     }
     
