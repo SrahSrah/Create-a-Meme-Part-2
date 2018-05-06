@@ -20,15 +20,14 @@ class SavedMemesTable: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         tableView.reloadData()
     }
  
     // Returns number of rows in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-     
         return fetchMemes().count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,11 +55,6 @@ class SavedMemesTable: UIViewController, UITableViewDelegate, UITableViewDataSou
         let imageToPass = fetchMemes()[indexPath.row].getImage()
         let controller = storyboard?.instantiateViewController(withIdentifier: "MemeDetail") as! MemeDetail
         controller.image = imageToPass
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -27,16 +27,16 @@ class CreateAMeme: UIViewController, UIImagePickerControllerDelegate, UINavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Call to FormatTextField:
-        topTextField = FormatTextFields(textField: topTextField, text: "TOP")
-        bottomTextField = FormatTextFields(textField: bottomTextField, text: "BOTTOM")
+        //Call to formatTextField:
+        topTextField = formatTextFields(textField: topTextField, text: "TOP")
+        bottomTextField = formatTextFields(textField: bottomTextField, text: "BOTTOM")
         
         //Disables share button upon start up. Will be enabled once image chosen
         shareButton.isEnabled = false
     }
     
     // Formats text feilds:
-    func FormatTextFields(textField : UITextField, text : String) -> UITextField{
+    func formatTextFields(textField : UITextField, text : String) -> UITextField{
         
         textField.delegate = self
         
@@ -80,7 +80,7 @@ class CreateAMeme: UIViewController, UIImagePickerControllerDelegate, UINavigati
     
     // Stops editing text field when user presses Return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return true
     }
     
@@ -171,13 +171,13 @@ class CreateAMeme: UIViewController, UIImagePickerControllerDelegate, UINavigati
             shareButton.isEnabled = true
         }
         
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // Called when user cancels out of the image picker view
     func imagePickerControllerDidCancel(_: UIImagePickerController){
         
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         
     }
 
@@ -191,8 +191,8 @@ class CreateAMeme: UIViewController, UIImagePickerControllerDelegate, UINavigati
         toolBar.isHidden = true
 
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
@@ -236,6 +236,10 @@ class CreateAMeme: UIViewController, UIImagePickerControllerDelegate, UINavigati
         
     }
     
+    @IBAction func dismissCreateAMeme(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
+    }
 }
 
 
